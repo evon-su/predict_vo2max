@@ -41,15 +41,14 @@ def MODEL2(user_info, speed_ls, hr_ls):
 
     return 0.10564508 * ratio_med**2 - 1.22491908 * ratio_med + 45.16544165
 
-def fit_polyfit(user_info, actdf):
+def fit_polyfit(user_info, actdf, degree=1):
     import matplotlib.pyplot as plt
     ratio_med_ls = []
     vo2max_ls = []
     color_ls = []
-    for user in user_info:
-        print(" USER : ", user, f"gender={info[user]['gender']}, bmi={info[user]['bmi']:.1f}")
-        for workout_number in actdf.loc[user]['workout_number']:
-            print(" -- workout_number : ", workout_number, end=' : ')
+    for user in actdf.index.unique():
+        for workout_number in actdf.loc[[user]]['workout_number']:
+            print(" -- workout_number : ", user, workout_number)
             workout = preprocess.get_workout_df(user, workout_number)
             rls = []
             for speed, hr in zip(workout.SPEED, workout.HEART_RATE):
@@ -64,7 +63,7 @@ def fit_polyfit(user_info, actdf):
             vo2max_ls.append(actdf[actdf.workout_number==workout_number]['real_vo2max'].iloc[0])
             color_ls.append(c)
 
-    coef = np.polyfit(ratio_med_ls, vo2max_ls, 2)
+    coef = np.polyfit(ratio_med_ls, vo2max_ls, degree)
     plt.scatter(ratio_med_ls, vo2max_ls, alpha=0.3, color=color_ls)
     x = np.linspace(5, 21, 100)
     y = 0
