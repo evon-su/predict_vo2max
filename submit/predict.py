@@ -14,29 +14,12 @@ def predictVO2max(user_info, speed_ls, hr_ls, model=modeling.model2()):
 
 
 if __name__ == '__main__':
-    import pandas as pd
+    import sample_data
 
-    data_path = "vo2max_data_for_interview/"
-    user_info = pd.read_csv(data_path + "user_info.csv", index_col='user').to_dict(orient='index')
+    user_info = sample_data.user_info
+    speed_ls = sample_data.speed_ls
+    hr_ls = sample_data.hr_ls
 
-    actdf = pd.read_csv(data_path + "vo2max_GT.csv", index_col='user')
+    vo2max_pred = predictVO2max(user_info, speed_ls, hr_ls, modeling.model2())
 
-    cnt, mse = 0, 0
-    ls = []
-    for user, row in actdf.iterrows():
-        cnt += 1
-        workout_number = row['workout_number']
-        workout = pd.read_csv(data_path + f'raw_data/{user}_{workout_number}.csv')
-        vo2max_real = actdf.loc[actdf['workout_number']==workout_number, 'real_vo2max'].values[0]
-
-        # (MAIN) PREDICTING
-        vo2max_pred = predictVO2max(user_info[user], workout['SPEED'], workout['HEART_RATE'], modeling.model2())
-
-        mse += (vo2max_pred - vo2max_real)**2
-        print(f"{user}_{workout_number}: predict: {vo2max_pred:.1f}, real: {vo2max_real}, diff={abs(vo2max_pred - vo2max_real):.1f}")
-        ls.append(abs(vo2max_pred - vo2max_real))
-    print("RMSE=", (mse/cnt)**0.5)
-
-    import matplotlib.pyplot as plt
-    plt.hist(ls, bins=30, alpha=0.3)
-    plt.show()
+    print("PREDICT: ", vo2max_pred)
