@@ -16,5 +16,5 @@ python predict.py
 
 2. 測試資料在 sample_data.py
 3. api 呼叫之模型運算在 modeling.py
-3. 模型訓練在 pipeline.py
+3. 模型訓練流程在 pipeline.py
 
