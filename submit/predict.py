@@ -20,6 +20,10 @@ if __name__ == '__main__':
     speed_ls = sample_data.speed_ls
     hr_ls = sample_data.hr_ls
 
+    print("USER_INFO: ", user_info)
+    print("SPEED_LS[:10]: ", speed_ls[:10])
+    print("HR_LS[:10]: ", hr_ls[:10])
+
     vo2max_pred = predictVO2max(user_info, speed_ls, hr_ls, modeling.model2())
 
     print("PREDICT: ", vo2max_pred)
