@@ -2,7 +2,6 @@
 (不須下載第三套件)
 ```commandline
 git clone https://github.com/evon-su/predict_vo2max.git
-python -m venv venv
 cd submit
 python predict.py
 ```
