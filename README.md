@@ -14,6 +14,7 @@ python predict.py
      - hr_ls: heart rate list
      - model: 目前有 modeling.model1 & modeling.model2 兩種模型
 
-2. api 呼叫之模型運算在 modeling.py
+2. 測試資料在 sample_data.py
+3. api 呼叫之模型運算在 modeling.py
 3. 模型訓練在 pipeline.py
 
