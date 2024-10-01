@@ -1,4 +1,4 @@
-import joblib
+import json
 
 import preprocess
 
@@ -33,7 +33,9 @@ def model1(coef=(2.25368142, 18.48279631), hrr_range=(0.7, 0.92), speed_range=(3
     return fn
 
 def model2(hrr_range=(0.7, 0.92), speed_range=(3, 30)):
-    ml_params = joblib.load('ml_model2.pkl')
+    with open('ml_model.json', 'r', encoding='utf-8') as file:
+        ml_params = json.load(file)
+
     coef = ml_params['coef_']
     intercept = ml_params['intercept_']
 

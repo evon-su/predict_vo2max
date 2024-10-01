@@ -10,7 +10,6 @@ from sklearn.linear_model import LinearRegression
 import matplotlib.pyplot as plt
 import warnings
 warnings.simplefilter("ignore")
-import joblib
 
 
 def get_info(path=None, win=3, hrr_range=(0,1), speed_range=(0, 30), visual=True):
