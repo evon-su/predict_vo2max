@@ -15,3 +15,19 @@ def get_train_test_ls(total_len, train_ratio, rand=0):
 
     return train_ls, test_ls
 
+def get_std(ls):
+    summation = sum(ls)
+    ls_len = len(ls)
+    if summation > 0:
+        avg = summation / ls_len
+        variance = 0
+        for v in ls:
+            variance += (v - avg) * (v - avg)
+
+        return (variance / ls_len) ** 0.5
+
+    else:
+        return 0
+
+
+
