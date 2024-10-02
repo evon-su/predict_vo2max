@@ -1,10 +1,16 @@
 import modeling
 
 
-def predictVO2max(user_info, speed_ls, hr_ls, model=modeling.model2()):
+def predictVO2max(user_info,
+                  speed_ls,
+                  hr_ls,
+                  model=modeling.model2()):
     """
-    :param user_info: contains "gender", "hr_max", "hr_rest" of the user
-    :param model: the api of MODEL
+    :param user_info: contains "gender", "hr_max",
+                      "hr_rest" of the user
+    :param model: the api of MODEL.
+                  modeling.model1 is Simple LinearRegression,
+                  modeling.model2 is LinearRegression with ['RATIO', 'gender', 'hr_rest']
     :return: predict vo2max
     """
 
@@ -19,6 +25,7 @@ if __name__ == '__main__':
     user_info = sample_data.user_info
     speed_ls = sample_data.speed_ls
     hr_ls = sample_data.hr_ls
+    # altitude_ls = sample_data.altitude_ls
 
     print("USER_INFO: ", user_info)
     print("SPEED_LS[:10]: ", speed_ls[:10])
