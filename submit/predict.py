@@ -10,7 +10,7 @@ def predictVO2max(user_info,
                       "hr_rest" of the user
     :param model: the api of MODEL.
                   modeling.model1 is Simple LinearRegression,
-                  modeling.model2 is LinearRegression with ['RATIO', 'gender', 'hr_rest']
+                  modeling.model2 is LinearRegression from ['RATIO', 'gender', 'hr_rest']
     :return: predict vo2max
     """
 
