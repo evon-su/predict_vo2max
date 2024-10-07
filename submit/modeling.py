@@ -6,10 +6,16 @@ def model1(coef=None,
            speed_range=(3, 30)):
     """
     Simple Linear Regression by 'RATIO_median'
-    :param coef: linear regression coefficient
-    :param hrr_range: filter by hrr range
-    :param speed_range: filter by speed range
-    :return:
+
+    Arguments
+    ---------
+    coef: linear regression coefficient
+    hrr_range: filter by hrr range
+    speed_range: filter by speed range
+
+    return
+    ------
+    VO2max
     """
     def fn(user_info, speed_ls, hr_ls):
         nonlocal coef, hrr_range, speed_range
